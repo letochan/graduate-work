@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Распознавание дактилем</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css" />
+  <style>
+    :root {
+      --w: 512px;
+      --h: 288px;
+      /*--h0: 576px;
+      --w0: 1024px;*/
+      --h0: 576px;
+      --w0: 766px;
+      --h1: 144px;
+      --w1: 256px;
+    }
+
+    html,
+    body,
+    main {
+      margin: 0;
+      height: 100%;
+      max-width: 100%;
+    }
+
+    main {
+      width: calc(var(--w) * 2.1);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .split-view {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    #output {
+      border-radius: 8px;
+      background-color: #0000007e;
+      width: var(--w0);
+      height: var(--h0);
+      top: 82px;
+    }
+
+    #input {
+      border-radius: 8px;
+      background-color: #0000007e;
+      width: var(--w1);
+      height: var(--h1);
+      visibility: hidden;
+      top: 82px;
+      position: fixed;
+    }
+
+    #logs {
+      height: 200px;
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+
+
+    #textbox {
+      /*resize: vertical;*/
+      margin:0 auto;
+      min-height: 125px;
+    }
+
+    
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="split-view">
+      <canvas id="output"></canvas>
+    </div>
+    <video id="input"></video>
+    <div style="position: relative; width: var(--w0); margin: 0 auto">
+      <button onclick="document.getElementById('textbox').value = ''" style="position:absolute; right: -5px; top: 0;background: #979797;
+      border: 1px solid #2f3136;
+      color: #fff;">Очистить</button>
+      <textarea name="textbox" id="textbox"></textarea>
+  </div>
+    <!-- <pre id="logs"></pre> -->
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script type="text/javascript" src="http://yastatic.net/jquery/2.1.3/jquery.min.js"></script>
+  <script src="grscript.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/autosize@5.0.0/dist/autosize.min.js"></script>
+  <script>autosize(document.getElementById('textbox'));</script>
+</body>
+
+</html>
